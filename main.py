@@ -1,1 +1,4 @@
-print("Digital Recognition")
+import FilesManager
+
+
+FilesManager.importFiles("./")
