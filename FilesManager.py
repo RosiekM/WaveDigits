@@ -33,4 +33,4 @@ def importFiles(Path):
 
 
 def parseName(str):
-    return str[0:2], str[3:4], int(str[6])
+    return str[0:3], str[3:4], int(str[6])
