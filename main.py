@@ -7,3 +7,5 @@ for i in types:
     print(types[i])
 
 print("Kacper pipa")
+
+FilesManager.joinMfcc(files)
