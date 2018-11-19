@@ -25,7 +25,8 @@ def importFiles(Path):
                         digit.append(tmp[x]["znak"])
                     if tmp[x]["typ"] not in type:
                         type[tmp[x]["typ"]] = []
-                    type[tmp[x]["typ"]].append(tmp[x]["lektor"])
+                    if tmp[x]["lektor"] not in type[tmp[x]["typ"]]:
+                        type[tmp[x]["typ"]].append(tmp[x]["lektor"])
 
     except: print("permission error in " + Path)
     return tmp, digit, type
