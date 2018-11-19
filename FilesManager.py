@@ -2,6 +2,7 @@ from os import *
 import fnmatch
 import scipy.io.wavfile as wav
 from python_speech_features import mfcc
+import numpy as np
 
 def importFiles(Path):
     tmp = {}
@@ -34,3 +35,23 @@ def importFiles(Path):
 
 def parseName(str):
     return str[0:3], str[3:4], int(str[6])
+
+
+def joinMfcc(files, excluded=None):
+    dict = {}
+    for i in files:
+        if i != files:
+            if files[i]["znak"] not in dict:
+                dict[files[i]["znak"]]={}
+            for k in range(0, len(np.transpose(files[i]["mfcc"]))):
+                if k not in dict[files[i]["znak"]]:
+                    dict[files[i]["znak"]][k] = []
+                dict[files[i]["znak"]][k].append(np.transpose(files[i]["mfcc"])[k,:])
+
+
+    for k in dict:
+        for i in dict[k]:
+            dict[k][i] = np.concatenate(dict[k][i], axis=None)
+    print(dict)
+
+    return dict
