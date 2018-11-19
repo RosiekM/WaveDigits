@@ -34,3 +34,13 @@ def importFiles(Path):
 
 def parseName(str):
     return str[0:3], str[3:4], int(str[6])
+
+def joinMfcc(files):
+    dict = {}
+    for i in files:
+        if files[i]["znak"] not in dict:
+            dict[files[i]["znak"]]=[]
+        dict[files[i]["znak"]].append(files[i])
+    for i in dict:
+        dict[i]=
+    return dict
