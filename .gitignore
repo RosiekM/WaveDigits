@@ -113,3 +113,6 @@ dmypy.json
 # Pyre type checker
 .pyre/
 *.xml
+.idea/misc.xml
+.idea/WaveDigits.iml
+.idea/workspace.xml
