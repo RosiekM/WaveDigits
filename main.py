@@ -18,8 +18,11 @@ from sklearn.model_selection import KFold
 
 
 
-one = KFold(n_splits=7)
+one = KFold(n_splits=5)
 one.get_n_splits(types["M"])
 
 for train_index, test_index in one.split(types["M"]):
-    print("Train: ", train_index, "Test: ", test_index)
+    data = []
+    for i in test_index:
+        data.append(types["M"][i])
+    print("Testowy:", data)
