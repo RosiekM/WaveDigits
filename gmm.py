@@ -1,0 +1,4 @@
+
+
+def myGmm(mfcc):
+    None
