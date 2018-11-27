@@ -3,6 +3,7 @@ import numpy as np
 import scipy.io.wavfile as wav
 from python_speech_features import mfcc
 
+
 def myGmm(mfcc):
     tmp = {}
     for i in mfcc:
@@ -14,12 +15,13 @@ def myGmm(mfcc):
         tmp[i] = tmp2.fit(tmp3)
         print("another one is finished")
 
-
     return tmp
 
 
 def compare(gmm, file):
     rate, sig = wav.read(file)
-    tmp  = mfcc(sig, rate)
-    one = gmm[0].score(tmp[0])
-    print(one)
+    tmp = mfcc(sig, rate)
+    LLHlist = []
+    for i in gmm:
+        LLHlist[i] = gmm[i].score(tmp)
+    print("The best similarity goes to number: ", max(LLHlist).index(), " with value of ", max(LLHlist))
