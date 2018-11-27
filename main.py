@@ -4,8 +4,7 @@ from sklearn.model_selection import KFold
 
 files, digits, types = FilesManager.importFiles("train")
 
-for i in types:
-    print(types[i])
+
 
 
 train, test = test.split(types["M"])
@@ -19,5 +18,4 @@ one = gmm.myGmm(mfcc[0])
 
 
 
-print(one[0])
 

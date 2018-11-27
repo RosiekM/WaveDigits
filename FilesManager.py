@@ -63,4 +63,5 @@ def joinMfcc(files, excluded=None):
     for k in dict:
         for i in dict[k]:
             dict[k][i] = np.concatenate(dict[k][i], axis=None)
+
     return dict
