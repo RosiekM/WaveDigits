@@ -1,28 +1,21 @@
 import FilesManager
-
+import test, gmm
+from sklearn.model_selection import KFold
 
 files, digits, types = FilesManager.importFiles("train")
 
 
 
 
-print(types["M"])
+train, test = test.split(types["M"])
 
 
-one = FilesManager.joinMfcc(files)
+mfcc = []
+for i in test:
+   mfcc.append(FilesManager.joinMfcc(files, excluded=i))
 
-print(one[1][12])
-
-
-from sklearn.model_selection import KFold
-
+one = gmm.myGmm(mfcc[0])
 
 
-one = KFold(n_splits=5)
-one.get_n_splits(types["M"])
 
-for train_index, test_index in one.split(types["M"]):
-    data = []
-    for i in test_index:
-        data.append(types["M"][i])
-    print("Testowy:", data)
+

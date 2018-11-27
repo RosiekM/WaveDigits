@@ -39,14 +39,25 @@ def parseName(str):
 
 def joinMfcc(files, excluded=None):
     dict = {}
-    for i in files:
-        if i != files:
-            if files[i]["znak"] not in dict:
-                dict[files[i]["znak"]]={}
-            for k in range(0, len(np.transpose(files[i]["mfcc"]))):
-                if k not in dict[files[i]["znak"]]:
-                    dict[files[i]["znak"]][k] = []
-                dict[files[i]["znak"]][k].append(np.transpose(files[i]["mfcc"])[k,:])
+    if excluded == None:
+        for i in files:
+            if i != files:
+                if files[i]["znak"] not in dict:
+                    dict[files[i]["znak"]]={}
+                for k in range(0, len(np.transpose(files[i]["mfcc"]))):
+                    if k not in dict[files[i]["znak"]]:
+                        dict[files[i]["znak"]][k] = []
+                    dict[files[i]["znak"]][k].append(np.transpose(files[i]["mfcc"])[k,:])
+    else:
+        for i in files:
+            if i != files:
+                if files[i]["lektor"] not in excluded:
+                    if files[i]["znak"] not in dict:
+                        dict[files[i]["znak"]] = {}
+                    for k in range(0, len(np.transpose(files[i]["mfcc"]))):
+                        if k not in dict[files[i]["znak"]]:
+                            dict[files[i]["znak"]][k] = []
+                        dict[files[i]["znak"]][k].append(np.transpose(files[i]["mfcc"])[k, :])
 
 
     for k in dict:
