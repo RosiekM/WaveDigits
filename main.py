@@ -1,5 +1,5 @@
 import FilesManager
-import test
+import test, gmm
 from sklearn.model_selection import KFold
 
 files, digits, types = FilesManager.importFiles("train")
@@ -7,15 +7,17 @@ files, digits, types = FilesManager.importFiles("train")
 for i in types:
     print(types[i])
 
-print("Kacper pipa")
 
 train, test = test.split(types["M"])
-print(test)
+
 
 mfcc = []
 for i in test:
    mfcc.append(FilesManager.joinMfcc(files, excluded=i))
 
+one = gmm.myGmm(mfcc[0])
 
 
-print(mfcc)
+
+print(one[0])
+
