@@ -16,6 +16,7 @@ for i in test:
 
 one = gmm.myGmm(mfcc[0])
 
-
+for i in files:
+   gmm.compare(one, files[i]["path"])
 
 

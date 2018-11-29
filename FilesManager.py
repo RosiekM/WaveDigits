@@ -43,25 +43,19 @@ def joinMfcc(files, excluded=None):
         for i in files:
             if i != files:
                 if files[i]["znak"] not in dict:
-                    dict[files[i]["znak"]]={}
-                for k in range(0, len(np.transpose(files[i]["mfcc"]))):
-                    if k not in dict[files[i]["znak"]]:
-                        dict[files[i]["znak"]][k] = []
-                    dict[files[i]["znak"]][k].append(np.transpose(files[i]["mfcc"])[k,:])
+                    dict[files[i]["znak"]]=files[i]["mfcc"]
+                else:
+                    dict[files[i]["znak"]] = np.concatenate((dict[files[i]["znak"]], files[i]["mfcc"] ))
     else:
         for i in files:
             if i != files:
                 if files[i]["lektor"] not in excluded:
                     if files[i]["znak"] not in dict:
-                        dict[files[i]["znak"]] = {}
-                    for k in range(0, len(np.transpose(files[i]["mfcc"]))):
-                        if k not in dict[files[i]["znak"]]:
-                            dict[files[i]["znak"]][k] = []
-                        dict[files[i]["znak"]][k].append(np.transpose(files[i]["mfcc"])[k, :])
+                        dict[files[i]["znak"]] = files[i]["mfcc"]
+                    else:
+                        dict[files[i]["znak"]] = np.concatenate((dict[files[i]["znak"]], files[i]["mfcc"]))
 
 
-    for k in dict:
-        for i in dict[k]:
-            dict[k][i] = np.concatenate(dict[k][i], axis=None)
+
 
     return dict
