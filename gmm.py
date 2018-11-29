@@ -20,7 +20,7 @@ def compare(gmm, file):
     rate = {}
     for i in gmm:
         tmp2 = gmm[i]
-        rate[i] = np.array(tmp2.score(tmp))
+        rate[i] = tmp2.score(tmp)
     print(file)
     print(rate)
 
