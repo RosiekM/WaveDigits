@@ -10,7 +10,7 @@ def myGmm(mfcc):
         tmp3 = []
         for k in mfcc[i]:
             tmp3.append(mfcc[i][k])
-        tmp2 = GaussianMixture(n_components=13)
+        tmp2 = GaussianMixture(n_components=13, random_state=3)
         tmp[i] = tmp2.fit(tmp3)
         print("another one is finished")
 
