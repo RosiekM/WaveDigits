@@ -5,23 +5,20 @@ from python_speech_features import mfcc
 
 
 def myGmm(mfcc):
-    tmp = {}
+    model_gmm = {}
     for i in mfcc:
-        tmp[i] = {}
-        tmp3 = []
-        for k in mfcc[i]:
-            tmp3.append(mfcc[i][k])
-        tmp2 = GaussianMixture(n_components=13)
-        tmp[i] = tmp2.fit(tmp3)
+        gauss = GaussianMixture(n_components=13)
+        model_gmm[i] = gauss.fit(mfcc[i])
         print("another one is finished")
 
-    return tmp
+    return model_gmm
 
 
 def compare(gmm, file):
     rate, sig = wav.read(file)
     tmp = mfcc(sig, rate)
-    LLHlist = []
+    LLHlist = {}
     for i in gmm:
-        LLHlist[i] = gmm[i].score(tmp)
-    print("The best similarity goes to number: ", max(LLHlist).index(), " with value of ", max(LLHlist))
+        tmp2 = gmm[i]
+        print(np.array(tmp2.score(tmp)))
+
