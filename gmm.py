@@ -15,12 +15,20 @@ def myGmm(mfcc):
 
 
 def compare(gmm, file):
-    rate, sig = wav.read(file)
+    rate, sig = wav.read(file["path"])
     tmp = mfcc(sig, rate)
     rate = {}
     for i in gmm:
         tmp2 = gmm[i]
         rate[i] = tmp2.score(tmp)
-    print(file)
-    print(rate)
+    return (keywithmaxval(rate))
+
+
+def keywithmaxval(d):
+    """ from https://stackoverflow.com/questions/268272/getting-key-with-maximum-value-in-dictionary
+        a) create a list of the dict's keys and values;
+        b) return the key with the max value"""
+    v = list(d.values())
+    k = list(d.keys())
+    return k[v.index(max(v))]
 

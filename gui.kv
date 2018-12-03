@@ -1,0 +1,283 @@
+#: import ListAdapter kivy.adapters.listadapter.ListAdapter
+#: import ListItemButton kivy.uix.listview.ListItemButton
+
+
+
+
+
+<ListItemButton>
+
+<tagEditor>:
+    cols: 1
+    rows: 3
+
+
+    GridLayout:
+        cols: 1
+        rows: 4
+
+        Label:
+            text: "MFCC"
+
+
+        GridLayout:
+            cols: 3
+            rows: 1
+
+            GridLayout:
+                cols: 2
+                rows: 1
+
+                Label:
+                    text: "ilość iteracji"
+
+                TextInput:
+                    input_filter: "int"
+
+            GridLayout:
+                cols: 2
+                rows: 1
+
+                Label:
+                    text: "ilość filtrów"
+
+                TextInput:
+                    input_filter: "int"
+
+
+            GridLayout:
+                cols: 2
+                rows: 1
+
+                Label:
+                    text: "ilosc cech"
+
+                TextInput:
+                    input_filter: "int"
+
+
+
+        GridLayout:
+            cols: 3
+            rows: 1
+
+            GridLayout:
+                cols: 2
+                rows: 1
+
+                Label:
+                    text: "dlugsc okna w ms"
+
+                TextInput:
+                    input_filter: "int"
+
+            GridLayout:
+                cols: 2
+                rows: 1
+
+                Label:
+                    text: "nakladka okna w ms"
+
+                TextInput:
+                    input_filter: "int"
+
+
+            GridLayout:
+                cols: 2
+                rows: 1
+
+                Label:
+                    text: "filtr premfazy ( 0-wyłączony)"
+
+                TextInput:
+                    input_filter: "int"
+
+
+        GridLayout:
+            cols: 3
+            rows: 1
+
+            GridLayout:
+                cols: 2
+                rows: 1
+
+                Label:
+                    text: "delta"
+
+                Button:
+                    text: "przycisk"
+
+            GridLayout:
+                cols: 2
+                rows: 1
+
+                Label:
+                    text: "delta delt"
+
+
+
+
+                DropDown:
+
+                    id: dropdown
+                    on_select: None
+
+                    Button:
+                        text: 'Value A'
+                        size_hint_y: None
+                        height: '48dp'
+                        on_release: dropdown.select('A')
+
+                    Button:
+                        text: 'Value B'
+                        size_hint_y: None
+                        height: '48dp'
+                        on_release: dropdown.select('B')
+
+                    Button:
+                        text: 'Value C'
+                        size_hint_y: None
+                        height: '48dp'
+                        on_release: dropdown.select('C')
+
+
+            GridLayout:
+                cols: 2
+                rows: 1
+
+                Label:
+                    text: "okno"
+
+                Button:
+                    text: "przycisk"
+
+
+
+
+    GridLayout:
+        cols: 1
+        rows: 3
+
+
+        Label:
+            text: "GMM"
+
+
+        GridLayout:
+            cols: 3
+            rows: 1
+
+            GridLayout:
+                cols: 2
+                rows: 1
+
+                Label:
+                    text: "ilosc iteracji"
+
+                Button:
+                    text: "przycisk"
+                    on_press:dropdown.
+
+            GridLayout:
+                cols: 2
+                rows: 1
+
+                Label:
+                    text: "typ dopasowania"
+
+                Button:
+                    text: "przycisk"
+
+
+            GridLayout:
+                cols: 2
+                rows: 1
+
+                Label:
+                    text: "blokada random"
+
+                Button:
+                    text: "przycisk"
+
+
+
+        GridLayout:
+            cols: 3
+            rows: 1
+
+            GridLayout:
+                cols: 2
+                rows: 1
+
+                Label:
+                    text: "label"
+
+                Button:
+                    text: "przycisk"
+
+            GridLayout:
+                cols: 2
+                rows: 1
+
+                Label:
+                    text: "label"
+
+                Button:
+                    text: "przycisk"
+
+
+            GridLayout:
+                cols: 2
+                rows: 1
+
+                Label:
+                    text: "label"
+
+                Button:
+                    text: "przycisk"
+
+    GridLayout:
+        cols: 1
+        rows: 2
+
+
+        Label:
+            text: "Trening"
+
+
+        GridLayout:
+            cols: 3
+            rows: 1
+
+            GridLayout:
+                cols: 2
+                rows: 1
+
+                Label:
+                    text: "start"
+
+                Button:
+                    text: "przycisk"
+                    on_press: root.run()
+
+            GridLayout:
+                cols: 2
+                rows: 1
+
+                Label:
+                    text: "czas"
+
+                Button:
+                    text: "przycisk"
+
+
+            GridLayout:
+                cols: 2
+                rows: 1
+
+                Label:
+                    text: "skutecznosc"
+
+                Button:
+                    text: "przycisk"
+
