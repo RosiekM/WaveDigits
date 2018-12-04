@@ -24,7 +24,7 @@ def importFiles(Path, winlen=0.025, winstep=0.01, numcep=13, nfilt=26, nfft=512,
                     tmp[x]["name"] = x
                     tmp[x]["lektor"], tmp[x]["typ"], tmp[x]["znak"] = parseName(x)
                     rate, sig = wav.read(Path + "/" + x)
-                    tmp[x]["mfcc"] = mfcc_w_delta=delta(mfcc(sig, rate, winlen=winlen, winstep=winstep, numcep=numcep, nfilt=nfilt,
+                    tmp[x]["mfcc"] = delta(mfcc(sig, rate, winlen=winlen, winstep=winstep, numcep=numcep, nfilt=nfilt,
                                           nfft=nfft, lowfreq=lowfreq, highfreq=highfreq, preemph=preemph,
                                           ceplifter=ceplifter), N)
                     if tmp[x]["znak"] not in digit:
