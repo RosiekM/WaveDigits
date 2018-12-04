@@ -24,9 +24,10 @@ def importFiles(Path, winlen=0.025, winstep=0.01, numcep=13, nfilt=26, nfft=512,
                     tmp[x]["name"] = x
                     tmp[x]["lektor"], tmp[x]["typ"], tmp[x]["znak"] = parseName(x)
                     rate, sig = wav.read(Path + "/" + x)
-                    tmp[x]["mfcc"] = delta(mfcc(sig, rate, winlen=winlen, winstep=winstep, numcep=numcep, nfilt=nfilt,
-                                          nfft=nfft, lowfreq=lowfreq, highfreq=highfreq, preemph=preemph,
-                                          ceplifter=ceplifter), N)
+                    my_mfcc=mfcc(sig, rate, winlen=winlen, winstep=winstep, numcep=numcep, nfilt=nfilt,
+                         nfft=nfft, lowfreq=lowfreq, highfreq=highfreq, preemph=preemph,
+                         ceplifter=ceplifter)
+                    tmp[x]["mfcc"] = np.concatenate(my_mfcc,delta(my_mfcc, N))
                     if tmp[x]["znak"] not in digit:
                         digit.append(tmp[x]["znak"])
                     if tmp[x]["typ"] not in type:
