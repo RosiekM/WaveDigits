@@ -4,10 +4,16 @@ import scipy.io.wavfile as wav
 from python_speech_features import mfcc
 
 
-def myGmm(mfcc):
+def myGmm(mfcc, n_components, covariance_type, tol, reg_covar, max_iterreg_covar, n_init,
+          init_params, weights_init, means_init, precisions_init, random_state,
+          warm_start, verbose, verbose_interval):
     model_gmm = {}
     for i in mfcc:
-        gauss = GaussianMixture(n_components=13)
+        gauss = GaussianMixture(n_components=n_components, covariance_type=covariance_type, tol=tol,
+                                reg_covar=reg_covar, max_iterreg_covar=max_iterreg_covar, n_init=n_init,
+                                init_params=init_params, weights_init=weights_init, means_init=means_init,
+                                precisions_init=precisions_init, random_state=random_state,
+                                warm_start=warm_start, verbose=verbose, verbose_interval=verbose_interval)
         model_gmm[i] = gauss.fit(mfcc[i])
         print("another one is finished")
 
@@ -31,4 +37,3 @@ def keywithmaxval(d):
     v = list(d.values())
     k = list(d.keys())
     return k[v.index(max(v))]
-
