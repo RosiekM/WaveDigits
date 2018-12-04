@@ -4,13 +4,13 @@ import scipy.io.wavfile as wav
 from python_speech_features import mfcc
 
 
-def myGmm(mfcc, n_components, covariance_type, tol, reg_covar, max_iterreg_covar, n_init,
-          init_params, weights_init, means_init, precisions_init, random_state,
-          warm_start, verbose, verbose_interval):
+def myGmm(mfcc, n_components=1, covariance_type='full', tol=0.001, reg_covar=1e-06, max_iter=100, n_init=1,
+          init_params='kmeans', weights_init=None, means_init=None, precisions_init=None, random_state=None,
+          warm_start=False, verbose=0, verbose_interval=10):
     model_gmm = {}
     for i in mfcc:
         gauss = GaussianMixture(n_components=n_components, covariance_type=covariance_type, tol=tol,
-                                reg_covar=reg_covar, max_iterreg_covar=max_iterreg_covar, n_init=n_init,
+                                reg_covar=reg_covar, max_iter=max_iter, n_init=n_init,
                                 init_params=init_params, weights_init=weights_init, means_init=means_init,
                                 precisions_init=precisions_init, random_state=random_state,
                                 warm_start=warm_start, verbose=verbose, verbose_interval=verbose_interval)

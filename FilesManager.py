@@ -5,7 +5,8 @@ from python_speech_features import mfcc
 import numpy as np
 
 
-def importFiles(Path, winlen, winstep, numcep, nfilt, nfft, lowfreq, highfreq, preemph, ceplifter, appendEnergy):
+def importFiles(Path, winlen=0.025, winstep=0.01, numcep=13, nfilt=26, nfft=512, lowfreq=0, highfreq=None, preemph=0.97,
+                ceplifter=22):
     tmp = {}
     digit = []
     type = {}
