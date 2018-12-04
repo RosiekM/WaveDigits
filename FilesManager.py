@@ -4,32 +4,36 @@ import scipy.io.wavfile as wav
 from python_speech_features import mfcc
 import numpy as np
 
-def importFiles(Path):
+
+def importFiles(Path, winlen, winstep, numcep, nfilt, nfft, lowfreq, highfreq, preemph, ceplifter, appendEnergy):
     tmp = {}
     digit = []
-    type =  {}
+    type = {}
     try:
         for x in listdir(Path):
-            if not(path.isfile(Path+"/"+x)):
-                importFiles(Path+"/"+x)
+            if not (path.isfile(Path + "/" + x)):
+                importFiles(Path + "/" + x)
             if Path.__contains__("lost+found"):
                 None
             else:
                 if fnmatch.fnmatch(x, '*.wav') or fnmatch.fnmatch(x, '*.WAV'):
                     tmp[x] = {}
-                    tmp[x]["path"] = Path+"/"+x
+                    tmp[x]["path"] = Path + "/" + x
                     tmp[x]["name"] = x
                     tmp[x]["lektor"], tmp[x]["typ"], tmp[x]["znak"] = parseName(x)
-                    rate, sig = wav.read(Path+"/"+x)
-                    tmp[x]["mfcc"] = mfcc(sig, rate)
-                    if tmp[x]["znak"]  not in digit:
+                    rate, sig = wav.read(Path + "/" + x)
+                    tmp[x]["mfcc"] = mfcc(sig, rate, winlen=winlen, winstep=winstep, numcep=numcep, nfilt=nfilt,
+                                          nfft=nfft, lowfreq=lowfreq, highfreq=highfreq, preemph=preemph,
+                                          ceplifter=ceplifter)
+                    if tmp[x]["znak"] not in digit:
                         digit.append(tmp[x]["znak"])
                     if tmp[x]["typ"] not in type:
                         type[tmp[x]["typ"]] = []
                     if tmp[x]["lektor"] not in type[tmp[x]["typ"]]:
                         type[tmp[x]["typ"]].append(tmp[x]["lektor"])
 
-    except: print("permission error in " + Path)
+    except:
+        print("permission error in " + Path)
     return tmp, digit, type
 
 
@@ -43,9 +47,9 @@ def joinMfcc(files, excluded=None):
         for i in files:
             if i != files:
                 if files[i]["znak"] not in dict:
-                    dict[files[i]["znak"]]=files[i]["mfcc"]
+                    dict[files[i]["znak"]] = files[i]["mfcc"]
                 else:
-                    dict[files[i]["znak"]] = np.concatenate((dict[files[i]["znak"]], files[i]["mfcc"] ))
+                    dict[files[i]["znak"]] = np.concatenate((dict[files[i]["znak"]], files[i]["mfcc"]))
     else:
         for i in files:
             if i != files:
@@ -54,8 +58,5 @@ def joinMfcc(files, excluded=None):
                         dict[files[i]["znak"]] = files[i]["mfcc"]
                     else:
                         dict[files[i]["znak"]] = np.concatenate((dict[files[i]["znak"]], files[i]["mfcc"]))
-
-
-
 
     return dict
