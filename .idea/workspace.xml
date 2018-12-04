@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="5fff63e2-1270-4edb-88e8-26d116d28e9b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FilesManager.py" beforeDir="false" afterPath="$PROJECT_DIR$/FilesManager.py" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/venv/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,12 +30,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="py" value="258" />
+          <entry key="py" value="293" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="258" />
+          <entry key="Python" value="293" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.lifecycle.project">
@@ -51,8 +52,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/FilesManager.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="25" column="40" lean-forward="true" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="40" />
+            <state relative-caret-position="294">
+              <caret line="28" column="45" selection-start-line="28" selection-start-column="45" selection-end-line="28" selection-end-column="45" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -124,7 +125,7 @@
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="750" />
     <option name="width" value="1166" />
     <option name="height" value="1040" />
@@ -245,7 +246,7 @@
     <option name="totallyTimeSpent" value="17112000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24973656" />
@@ -330,8 +331,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/FilesManager.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="25" column="40" lean-forward="true" selection-start-line="25" selection-start-column="20" selection-end-line="25" selection-end-column="40" />
+        <state relative-caret-position="294">
+          <caret line="28" column="45" selection-start-line="28" selection-start-column="45" selection-end-line="28" selection-end-column="45" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
           </folding>
