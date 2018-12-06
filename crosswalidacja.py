@@ -1,12 +1,13 @@
 from sklearn.model_selection import KFold
 
 def split(list):
-    kf = KFold(n_splits=5)
+    kf = KFold(n_splits=6)
     train_base = []
     test_base = []
     for train_idx, test_idx in kf.split(list):
         tmp = []
         for i in train_idx:
+            #print(i)
             tmp.append(list[i])
         train_base.append(tmp)
         tmp2 = []

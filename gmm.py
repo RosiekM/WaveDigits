@@ -1,11 +1,8 @@
 from sklearn.mixture import GaussianMixture
-import numpy as np
-import scipy.io.wavfile as wav
-from python_speech_features import mfcc
 
 
 def myGmm(mfcc, n_components=1, covariance_type='full', tol=0.001, reg_covar=1e-06, max_iter=100, n_init=1,
-          init_params='kmeans', weights_init=None, means_init=None, precisions_init=None, random_state=None,
+          init_params='kmeans', weights_init=None, means_init=None, precisions_init=None, random_state=3,
           warm_start=False, verbose=0, verbose_interval=10):
     model_gmm = {}
     for i in mfcc:
@@ -15,18 +12,16 @@ def myGmm(mfcc, n_components=1, covariance_type='full', tol=0.001, reg_covar=1e-
                                 precisions_init=precisions_init, random_state=random_state,
                                 warm_start=warm_start, verbose=verbose, verbose_interval=verbose_interval)
         model_gmm[i] = gauss.fit(mfcc[i])
-        print("another one is finished")
+        #print("another one is finished")
 
     return model_gmm
 
 
-def compare(gmm, file):
-    rate, sig = wav.read(file["path"])
-    tmp = mfcc(sig, rate)
+def compare(gmm, mfcc):
     rate = {}
     for i in gmm:
         tmp2 = gmm[i]
-        rate[i] = tmp2.score(tmp)
+        rate[i] = tmp2.score(mfcc)
     return (keywithmaxval(rate))
 
 
@@ -36,4 +31,4 @@ def keywithmaxval(d):
         b) return the key with the max value"""
     v = list(d.values())
     k = list(d.keys())
-    return k[v.index(max(v))]
+    return k[v.index(max(v))], max(v)
